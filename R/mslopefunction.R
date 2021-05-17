@@ -1,6 +1,6 @@
 #' Calculate the slope for a given sample age (t)
 #'
-#' This function calculates the slope of a line from which samples of the same age (t) will fall along
+#' This function calculates the slope of a line from which samples from the same reservoir, at the same time, will fall along
 #'
 #' @param t sample age or time (Ma)
 #' @param ... optional arguments
