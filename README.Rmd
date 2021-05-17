@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# PbIso
+# PbIso R package
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -39,7 +39,7 @@ library(PbIso)
 ```{r, echo = FALSE}
 library(PbIso)
 ```
-#	Calculations {#calcs}
+#	Functions {#calcs}
 
 All of the functions in `PbIso` take one or more of the basic input parameters t (time (Ma)), x (^206^Pb/^204^Pb), y (^207^Pb/^204^Pb) and z (^208^Pb/^204^Pb) to perform the calculations. For advanced usage, the functions can also optionally take the values for different model parameters given in Table 1. See documentation for details on what input parameters are required or allowed in each function. The calculations and functions used in `PbIso` assume a starting composition and model following @RN10 2nd stage model. These values can be overridden in R if an alternative model (e.g. @RN10 1st stage or others) is preferred. 
 

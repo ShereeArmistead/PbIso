@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# PbIso
+# PbIso R package
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -19,7 +19,7 @@ devtools::install_github("shereearmistead/PbIso")
 library(PbIso)
 ```
 
-# Calculations
+# Functions
 
 All of the functions in `PbIso` take one or more of the basic input
 parameters t (time (Ma)), x (<sup>206</sup>Pb/<sup>204</sup>Pb), y
