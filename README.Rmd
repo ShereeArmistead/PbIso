@@ -24,17 +24,11 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of PbIso is to ...
+The package `PbIso` is a free and open R toolbox for commonly used calculations and plots of Pb-Pb isotope data.
 
 ## Installation
 
-You can install the released version of PbIso from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("PbIso")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+The development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
