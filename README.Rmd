@@ -52,6 +52,36 @@ model.params <- read.csv("ModelParams.csv")
 knitr::kable(model.params, justify = c("left", "centre"), caption = "Default model parameters used in `PbIso` functions. These can be manually changed if an alternative model is preferred.", "pipe", escape = FALSE)
 ```
 
+All of the functions in `PbIso` are designed for ease of use, while also allowing flexibility in changing model parameters. The required inputs are outlined in subsequent sections, but we have included a brief overview of the different ways these functions can be used below, using the `Calc64()` function as an example, which only requires one input (age). The default parameters in all `PbIso` functions are based on the @RN10 2nd stage model.
+
+The most basic usage is to simply include the one required input parameter, in this case age:
+```{r}
+Calc64(2700)
+```
+
+The optional parameters, in this case, T1, X1, Mu1, can also be specified:
+```{r}
+Calc64(2700, T1 = 4000, X1 = 9.5, Mu1 = 7)
+```
+
+Not all of the optional parameters need to be passed. For example, accepting the defaults for T1 and X1, but modifying Mu1 to 8:
+```{r}
+Calc64(2700, Mu1 = 8)
+```
+
+Rather than setting the optional parameters manually, a predefined model can be used. We have incorporated the @RN10 1st stage model as an option:
+```{r}
+Calc64(2700, model = SK1)
+```
+
+Alternatively, users may define their own models, which is particularly useful if this is needed for multiple calculations. To define your own model: 
+```{r}
+my_model <- list(T1 = 4000, X1 = 9, Y1 = 10, Z1 = 30, Mu1 = 8)
+Calc64(2700, model = my_model)
+```
+
+Note, that for `Calc64()` only age, T1, X1 and Mu1 are required (not Y1 or Z1), however to make the user-defined model applicable to other functions, it is best to include parameters required for all functions of interest.
+
 ## The evolution of radiogenic Pb isotopes with time {#basiccalcs}
 
 Calculate the ^206^Pb/^204^Pb, ^207^Pb/^204^Pb and ^208^Pb/^204^Pb ratios at a given time (assuming Stacey & Kramers (1975) 2nd stage model parameters), for example at 2700 Ma:
@@ -61,6 +91,7 @@ Calc64(2700)
 Calc74(2700)
 Calc84(2700)
 ```
+
 
 ```{r fig1, echo = FALSE, fig.cap = "Pb isotopic evolution through time, a) evolution of ^206^Pb/^204^Pb and ^207^Pb/^204^Pb; b) evolution of ^206^Pb/^204^Pb and ^208^Pb/^204^Pb. Isochrons for 3000 Ma, 2000 Ma, 1000 Ma and 0 Ma shown as dashed lines in both plots.", dpi=1000, fig.width = 10, fig.height= 4}
 model <- modelcurve(0:3700)
@@ -139,7 +170,7 @@ Calc84in(2700, 13.5, 14.5, 33)
 The `modelcurve()` function can be used to produce model curves over different time ranges with optional arguments (see `PbIso` documentation for more information). For example, in the code below, 'mc1' is the Stacey & Kramers (1975) 1st stage model from 4570 Ma to 3700 Ma, 'm2' is the Stacey & Kramers (1975) 2nd stage model from 3700 Ma to present, and 'mc3' is a hypothetical model using Stacey & Kramers (1975) 2nd stage starting composition but with a $\mu_1$ of 8. These three curves are shown in the figure below.
 
 ```{r}
-mc1 <- modelcurve(3700:4570, T1 = 4570, X1 = 9.307, Y1 = 10.294, Z1 = 29.487, W1 = 33.21, Mu1 = 7.19)
+mc1 <- modelcurve(3700:4570, model = SK1)
 mc2 <- modelcurve(0:3700)
 mc3 <- modelcurve(0:3700, Mu1 = 8)
 ```

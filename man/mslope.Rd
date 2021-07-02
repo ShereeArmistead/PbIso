@@ -18,7 +18,7 @@ mslope(t, ..., U8U5 = 137.88, L5 = 9.8485 * 10^-10, L8 = 1.55125 * 10^-10)
 \item{L8}{238U decay constant. Default is 1.55125 * 10^-10}
 }
 \description{
-This function calculates the slope of a line from which samples of the same age (t) will fall along
+This function calculates the slope of a line from which samples from the same reservoir, at the same time, will fall along
 }
 \examples{
 # Example of basic method using a hypothetical sample age of 2700 Ma

@@ -27,6 +27,11 @@
 #' # Example of using optional arguments based on Stacey & Kramers (1975) 1st stage model
 #'   CalcKa(2700, 33, 13.5, T1 = 4570, X1 = 9.307, Z1 = 31.23)
 #'
-CalcKa <- function(t, z, x, ..., T1 = 3700, X1 = 11.152, Z1 = 31.23, L2 = 0.49475 * 10^-10, L8 = 1.55125 * 10^-10) {
+CalcKa <- function(t, z, x, ..., T1 = 3700, X1 = 11.152, Z1 = 31.23, L2 = 0.49475 * 10^-10, L8 = 1.55125 * 10^-10, model) {
+  if(!missing(model)) {
+    T1  = ifelse(is.null(model$T1), T1, model$T1)
+    X1  = ifelse(is.null(model$X1), X1, model$X1)
+    Z1  = ifelse(is.null(model$Z1), Z1, model$Z1)
+  }
   ((z - Z1) / (x - X1)) / (((exp(L2*T1*10^6) - exp(L2*t*10^6))) / (exp(L8*T1*10^6) - exp(L8*t*10^6)))
 }

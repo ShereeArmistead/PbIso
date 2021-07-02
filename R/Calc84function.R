@@ -29,6 +29,11 @@
 #' # Example of using the optional argument for W1 = 30 only, and accepting the other defaults
 #'   Calc84(2700, W1 = 30)
 
-Calc84 <- function(t, ..., T1 = 3700, Z1 = 31.23, W1 = 36.84, L2 = 0.49475 * 10^-10) {
+Calc84 <- function(t, ..., T1 = 3700, Z1 = 31.23, W1 = 36.84, L2 = 0.49475 * 10^-10, model) {
+  if(!missing(model)) {
+    T1  = ifelse(is.null(model$T1), T1, model$T1)
+    Z1  = ifelse(is.null(model$Z1), Z1, model$Z1)
+    W1  = ifelse(is.null(model$W1), W1, model$W1)
+  }
   Z1 + (W1*(exp(L2*T1*10^6) - exp(L2*t*10^6)))
 }

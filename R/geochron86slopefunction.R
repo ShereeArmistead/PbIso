@@ -19,6 +19,13 @@
 #' # Calculate the geochron on a 206Pb/204Pb vs 207Pb/204Pb plot for time = 2700 Ma
 #'   geochron86slope(2700)
 
-geochron86slope <- function(t, ..., T1 = 3700, X1 = 11.152, Z1 = 31.23, Mu1 = 9.74, W1 = 36.84, L8 = 1.55125 * 10^-10, L2 = 0.49475 * 10^-10) {
+geochron86slope <- function(t, ..., T1 = 3700, X1 = 11.152, Z1 = 31.23, Mu1 = 9.74, W1 = 36.84, L8 = 1.55125 * 10^-10, L2 = 0.49475 * 10^-10, model) {
+  if(!missing(model)) {
+    T1  = ifelse(is.null(model$T1), T1, model$T1)
+    X1  = ifelse(is.null(model$X1), X1, model$X1)
+    Z1  = ifelse(is.null(model$Z1), Z1, model$Z1)
+    Mu1 = ifelse(is.null(model$Mu1), Mu1, model$Mu1)
+    W1  = ifelse(is.null(model$W1), W1, model$W1)
+  }
   ((Z1 + W1*(exp(L2*T1*10^6) - exp(L2*t*10^6))) - Z1) / ((X1 + Mu1*(exp(L8*T1*10^6) - exp(L8*t*10^6))) - X1)
 }

@@ -53,6 +53,62 @@ stage model. These values can be overridden in R if an alternative model
 Default model parameters used in `PbIso` functions. These can be
 manually changed if an alternative model is preferred.
 
+All of the functions in `PbIso` are designed for ease of use, while also
+allowing flexibility in changing model parameters. The required inputs
+are outlined in subsequent sections, but we have included a brief
+overview of the different ways these functions can be used below, using
+the `Calc64()` function as an example, which only requires one input
+(age). The default parameters in all `PbIso` functions are based on the
+Stacey and Kramers (1975) 2nd stage model.
+
+The most basic usage is to simply include the one required input
+parameter, in this case age:
+
+``` r
+Calc64(2700)
+#> [1] 13.63662
+```
+
+The optional parameters, in this case, T1, X1, Mu1, can also be
+specified:
+
+``` r
+Calc64(2700, T1 = 4000, X1 = 9.5, Mu1 = 7)
+#> [1] 11.87765
+```
+
+Not all of the optional parameters need to be passed. For example,
+accepting the defaults for T1 and X1, but modifying Mu1 to 8:
+
+``` r
+Calc64(2700, Mu1 = 8)
+#> [1] 13.19276
+```
+
+Rather than setting the optional parameters manually, a predefined model
+can be used. We have incorporated the Stacey and Kramers (1975) 1st
+stage model as an option:
+
+``` r
+Calc64(2700, model = SK1)
+#> [1] 12.98544
+```
+
+Alternatively, users may define their own models, which is particularly
+useful if this is needed for multiple calculations. To define your own
+model:
+
+``` r
+my_model <- list(T1 = 4000, X1 = 9, Y1 = 10, Z1 = 30, Mu1 = 8)
+Calc64(2700, model = my_model)
+#> [1] 11.71732
+```
+
+Note, that for `Calc64()` only age, T1, X1 and Mu1 are required (not Y1
+or Z1), however to make the user-defined model applicable to other
+functions, it is best to include parameters required for all functions
+of interest.
+
 ## The evolution of radiogenic Pb isotopes with time
 
 Calculate the <sup>206</sup>Pb/<sup>204</sup>Pb,
@@ -142,7 +198,7 @@ starting composition but with a *μ*<sub>1</sub> of 8. These three curves
 are shown in the figure below.
 
 ``` r
-mc1 <- modelcurve(3700:4570, T1 = 4570, X1 = 9.307, Y1 = 10.294, Z1 = 29.487, W1 = 33.21, Mu1 = 7.19)
+mc1 <- modelcurve(3700:4570, model = SK1)
 mc2 <- modelcurve(0:3700)
 mc3 <- modelcurve(0:3700, Mu1 = 8)
 ```

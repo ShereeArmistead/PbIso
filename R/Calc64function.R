@@ -28,6 +28,11 @@
 #' # Example of using the optional argument for Mu1 = 8 only, and accepting the other defaults
 #'   Calc64(2700, Mu1 = 8)
 
-Calc64 <- function(t, ..., T1 = 3700, X1 = 11.152, Mu1 = 9.74, L8 = 1.55125 * 10^-10) {
+Calc64 <- function(t, ..., T1 = 3700, X1 = 11.152, Mu1 = 9.74, L8 = 1.55125 * 10^-10, model) {
+  if(!missing(model)) {
+    T1  = ifelse(is.null(model$T1), T1, model$T1)
+    X1  = ifelse(is.null(model$X1), X1, model$X1)
+    Mu1 = ifelse(is.null(model$Mu1), Mu1, model$Mu1)
+  }
   X1 + (Mu1*(exp(L8*T1*10^6) - exp(L8*t*10^6)))
 }

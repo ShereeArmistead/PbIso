@@ -27,9 +27,15 @@
 #'   CalcModAge(13.5, 14.5, T1 = 4570, X1 = 9.307, Y1 = 10.294)
 #'
 
-CalcModAge <- function(x, y, ..., T1 = 3700, X1 = 11.152, Y1 = 12.998, U8U5 = 137.88, L5 = 9.8485 * 10^-10, L8 = 1.55125 * 10^-10) if (!is.na(x) & !is.na(y)) {
+CalcModAge <- function(x, y, ..., T1 = 3700, X1 = 11.152, Y1 = 12.998, U8U5 = 137.88, L5 = 9.8485 * 10^-10, L8 = 1.55125 * 10^-10, model) if (!is.na(x) & !is.na(y)) {
+  if(!missing(model)) {
+    T1  = ifelse(is.null(model$T1), T1, model$T1)
+    X1  = ifelse(is.null(model$X1), X1, model$X1)
+    Y1  = ifelse(is.null(model$Y1), Y1, model$Y1)
+  }
   tryCatch(uniroot(
     function(t, x, y, T1 = 3700, X1 = 11.152, Y1 = 12.998, U8U5 = 137.88, L5 = 9.8485 * 10^-10, L8 = 1.55125 * 10^-10) {
+
       ((1 / U8U5) * ((exp(L5*T1*10^6) - exp(L5*t*10^6)) /
                        (exp(L8*T1*10^6) - exp(L8*t*10^6)))) - ((y - Y1) / (x - X1))
     },
