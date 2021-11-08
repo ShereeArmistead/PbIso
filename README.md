@@ -10,7 +10,7 @@ The package `PbIso` is a free and open R toolbox for commonly used
 calculations and plots of Pb-Pb isotope data.
 
 Some of the functionality of `PbIso` has been deployed into a Shiny app
-that can be found here: <https://shereearmistead.shinyapps.io/PbCalc/>
+that can be found here: <https://shereearmistead.shinyapps.io/PbIsoApp/>
 
 ## Installation
 
