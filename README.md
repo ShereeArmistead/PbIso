@@ -10,7 +10,7 @@ The package `PbIso` is a free and open R toolbox for commonly used
 calculations and plots of Pb-Pb isotope data.
 
 Some of the functionality of `PbIso` has been deployed into a Shiny app
-that can be found here: <https://shereearmistead.shinyapps.io/PbCalc/>
+that can be found here: <https://shereearmistead.shinyapps.io/PbIsoApp/>
 
 ## Installation
 
@@ -125,19 +125,7 @@ Calc84(2700)
 #> [1] 33.36554
 ```
 
-<div class="figure">
-
-<img src="man/figures/README-fig1-1.png" alt="Pb isotopic evolution through time, a) evolution of ^206^Pb/^204^Pb and ^207^Pb/^204^Pb; b) evolution of ^206^Pb/^204^Pb and ^208^Pb/^204^Pb. Isochrons for 3000 Ma, 2000 Ma, 1000 Ma and 0 Ma shown as dashed lines in both plots." width="100%" />
-<p class="caption">
-Pb isotopic evolution through time, a) evolution of
-<sup>206</sup>Pb/<sup>204</sup>Pb and <sup>207</sup>Pb/<sup>204</sup>Pb;
-b) evolution of <sup>206</sup>Pb/<sup>204</sup>Pb and
-<sup>208</sup>Pb/<sup>204</sup>Pb. Isochrons for 3000 Ma, 2000 Ma, 1000
-Ma and 0 Ma shown as dashed lines in both plots.
-</p>
-
-</div>
-
+<img src="man/figures/README-fig1-1.png" title="Pb isotopic evolution through time, a) evolution of ^206^Pb/^204^Pb and ^207^Pb/^204^Pb; b) evolution of ^206^Pb/^204^Pb and ^208^Pb/^204^Pb. Isochrons for 3000 Ma, 2000 Ma, 1000 Ma and 0 Ma shown as dashed lines in both plots." alt="Pb isotopic evolution through time, a) evolution of ^206^Pb/^204^Pb and ^207^Pb/^204^Pb; b) evolution of ^206^Pb/^204^Pb and ^208^Pb/^204^Pb. Isochrons for 3000 Ma, 2000 Ma, 1000 Ma and 0 Ma shown as dashed lines in both plots." width="100%" />
 ## Model age
 
 To calculate the model age of a hypothetical sample with
@@ -203,16 +191,7 @@ mc2 <- modelcurve(0:3700)
 mc3 <- modelcurve(0:3700, Mu1 = 8)
 ```
 
-<div class="figure">
-
-<img src="man/figures/README-figmc-1.png" alt="Model curves generated using the `modelcurve()` function for [@RN10] 1st stage (mc1), [@RN10] 2nd stage (mc2) and a hypothetical sample with Mu=8 (mc3)" width="100%" />
-<p class="caption">
-Model curves generated using the `modelcurve()` function for (Stacey and
-Kramers 1975) 1st stage (mc1), (Stacey and Kramers 1975) 2nd stage (mc2)
-and a hypothetical sample with Mu=8 (mc3)
-</p>
-
-</div>
+<img src="man/figures/README-figmc-1.png" title="Model curves generated using the `modelcurve()` function for [@RN10] 1st stage (mc1), [@RN10] 2nd stage (mc2) and a hypothetical sample with Mu=8 (mc3)" alt="Model curves generated using the `modelcurve()` function for [@RN10] 1st stage (mc1), [@RN10] 2nd stage (mc2) and a hypothetical sample with Mu=8 (mc3)" width="100%" />
 
 ## Geochron lines
 
