@@ -250,7 +250,7 @@ geochron86yint(2700)
 ```
 
 Any questions/feedback, please contact me: Sheree Armistead
-<sarmistead@laurentian.ca>
+<sheree.armistead@utas.edu.au>
 
 # References
 
