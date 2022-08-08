@@ -33,15 +33,16 @@ CalcModAge <- function(x, y, ..., T1 = 3700, X1 = 11.152, Y1 = 12.998, U8U5 = 13
     X1  = ifelse(is.null(model$X1), X1, model$X1)
     Y1  = ifelse(is.null(model$Y1), Y1, model$Y1)
   }
-  tryCatch(uniroot(
-    function(t, x, y, T1 = 3700, X1 = 11.152, Y1 = 12.998, U8U5 = 137.88, L5 = 9.8485 * 10^-10, L8 = 1.55125 * 10^-10) {
 
-      ((1 / U8U5) * ((exp(L5*T1*10^6) - exp(L5*t*10^6)) /
-                       (exp(L8*T1*10^6) - exp(L8*t*10^6)))) - ((y - Y1) / (x - X1))
-    },
-    x = x, y = y, T1 = T1, X1 = X1, Y1 = Y1, U8U5 = U8U5, L5 = L5, L8 = L8, c(-4700,4700), extendInt = "yes")$root,
-    error = function(e) {
-      return(as.numeric(NA))
-    }
+  agefun <- function(t, x, y, T1 = 3700, X1 = 11.152, Y1 = 12.998, U8U5 = 137.88, L5 = 9.8485 * 10^-10, L8 = 1.55125 * 10^-10) {
+    ((1 / U8U5) * ((exp(L5*T1*10^6) - exp(L5*t*10^6)) /
+                     (exp(L8*T1*10^6) - exp(L8*t*10^6)))) - ((y - Y1) / (x - X1))
+  }
+
+  tryCatch(uniroot(agefun,
+                   x = x, y = y, T1 = T1, X1 = X1, Y1 = Y1, U8U5 = U8U5, L5 = L5, L8 = L8, c(-4700,4700), extendInt = "yes")$root,
+           error = function(e) {
+             return(as.numeric(NA))
+           }
   )
 } else{NA}

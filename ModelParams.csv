@@ -1,12 +1,14 @@
-Parameter,Description                               ,Default value           ,Reference          
-T1         ,Model start time (Ma)                     ,3700,@RN10
-X1         ,^206^Pb/^204^Pb model starting composition,11.152,@RN10
-Y1         ,^207^Pb/^204^Pb model starting composition,12.998,@RN10
-Z1         ,^208^Pb/^204^Pb model starting composition,31.23,@RN10
-Mu1        ,^238^U/^204^Pb model ($\mu_1$)   ,9.74,@RN10
+Parameter,Description,Default value,Reference
+T1,Model start time (Ma),3700,@RN10                         
+X1,^206^Pb/^204^Pb model starting composition,11.152,@RN10
+Y1,^207^Pb/^204^Pb model starting composition,12.998,@RN10
+Z1,^208^Pb/^204^Pb model starting composition,31.23,@RN10
+Mu1,^238^U/^204^Pb model ($\mu_1$),9.74,@RN10
 Ka1,^232^Th/^238^U model ($\kappa_1$),3.78,@RN10
-W1         ,^232^Th/^204^Pb model ($\omega_1$),36.84,@RN10
-L5         ,^235^U decay constant ($\lambda_5$)       ,9.8485 * 10^-10^ ,@RN103
-L8         ,^238^U decay constant ($\lambda_8$)       ,1.55125 * 10^-10^,@RN103
-L2         ,^232^Th decay constant ($\lambda_2$)      ,0.49475 * 10^-10^,@RN104
-U8U5       ,Present-day ^238^U/^235^U ratio           ,137.88,@RN10
+W1,^232^Th/^204^Pb model ($\omega_1$),36.84,@RN10
+L5,^235^U decay constant ($\lambda_5$),9.8485 * 10^-10^ ,@RN103
+L8,^238^U decay constant ($\lambda_8$),1.55125 * 10^-10^,@RN103
+L2,^232^Th decay constant ($\lambda_2$),0.49475 * 10^-10^,@RN104
+U8U5,Present-day ^238^U/^235^U ratio,137.88,@RN10                        
+E1,$\epsilon_1$ rate factor for change in $\mu$ over time,0,see @RN168
+E2,$\epsilon_2$ rate factor for change in $\kappa$ over time,0,see @RN168
