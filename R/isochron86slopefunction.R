@@ -1,6 +1,6 @@
-#' Slope of a geochron line on a 206Pb/204Pb vs 208Pb/204Pb plot for time (t)
+#' Slope of an isochron line on a 206Pb/204Pb vs 208Pb/204Pb plot for time (t)
 #'
-#' This function calculates the geochron slope on a 206Pb/204Pb vs 208Pb/204Pb plot for a given time (t)
+#' This function calculates the isochron slope on a 206Pb/204Pb vs 208Pb/204Pb plot for a given time (t)
 #'
 #' @param t sample age or time (Ma)
 #' @param ... optional arguments
@@ -13,13 +13,13 @@
 #' @param L2 232Th decay constant. Default is 0.49475 * 10^-10
 #' @export
 #' @usage
-#' # Calculate the geochron on a 206Pb/204Pb vs 207Pb/204Pb plot for time = 2700 Ma
-#'   geochron86slope(2700)
+#' # Calculate the isochron on a 206Pb/204Pb vs 208Pb/204Pb plot for time = 2700 Ma
+#'   isochron86slope(2700)
 #' @examples
-#' # Calculate the geochron on a 206Pb/204Pb vs 207Pb/204Pb plot for time = 2700 Ma
-#'   geochron86slope(2700)
+#' # Calculate the isochron on a 206Pb/204Pb vs 208Pb/204Pb plot for time = 2700 Ma
+#'   isochron86slope(2700)
 
-geochron86slope <- function(t, ..., T1 = 3700, X1 = 11.152, Z1 = 31.23, Mu1 = 9.74, W1 = 36.84, L8 = 1.55125 * 10^-10, L2 = 0.49475 * 10^-10, model) {
+isochron86slope <- function(t, ..., T1 = 3700, X1 = 11.152, Z1 = 31.23, Mu1 = 9.74, W1 = 36.84, L8 = 1.55125 * 10^-10, L2 = 0.49475 * 10^-10, model) {
   if(!missing(model)) {
     T1  = ifelse(is.null(model$T1), T1, model$T1)
     X1  = ifelse(is.null(model$X1), X1, model$X1)

@@ -1,6 +1,6 @@
-#' Y-intercept of a geochron line on a 206Pb/204Pb vs 207Pb/204Pb plot for time (t)
+#' Slope of an isochron line on a 206Pb/204Pb vs 207Pb/204Pb plot for time (t)
 #'
-#' This function calculates the y-intercept of a geochron line on a 206Pb/204Pb vs 207Pb/204Pb plot for a given time (t)
+#' This function calculates the isochron slope on a 206Pb/204Pb vs 207Pb/204Pb plot for a given time (t)
 #'
 #' @param t sample age or time (Ma)
 #' @param ... optional arguments
@@ -13,18 +13,18 @@
 #' @param L8 238U decay constant. Default is 1.55125 * 10^-10
 #' @export
 #' @usage
-#' # Calculate the geochron on a 206Pb/204Pb vs 207Pb/204Pb plot for time = 2700 Ma
-#'   geochron76slope(2700)
+#' # Calculate the isochron on a 206Pb/204Pb vs 207Pb/204Pb plot for time = 2700 Ma
+#'   isochron76slope(2700)
 #' @examples
-#' # Calculate the geochron on a 206Pb/204Pb vs 207Pb/204Pb plot for time = 2700 Ma
-#'   geochron76slope(2700)
+#' # Calculate the isochron on a 206Pb/204Pb vs 207Pb/204Pb plot for time = 2700 Ma
+#'   isochron76slope(2700)
 
-geochron76yint <- function(t, ..., T1 = 3700, X1 = 11.152, Y1 = 12.998, Mu1 = 9.74, U8U5 = 137.88, L5 = 9.8485 * 10^-10, L8 = 1.55125 * 10^-10, model) {
+isochron76slope <- function(t, ..., T1 = 3700, X1 = 11.152, Y1 = 12.998, Mu1 = 9.74, U8U5 = 137.88, L5 = 9.8485 * 10^-10, L8 = 1.55125 * 10^-10, model) {
   if(!missing(model)) {
     T1  = ifelse(is.null(model$T1), T1, model$T1)
     X1  = ifelse(is.null(model$X1), X1, model$X1)
     Y1  = ifelse(is.null(model$Y1), Y1, model$Y1)
     Mu1 = ifelse(is.null(model$Mu1), Mu1, model$Mu1)
   }
-  Y1 - (((Y1 + (Mu1/U8U5)*(exp(L5*T1*10^6) - exp(L5*t*10^6))) - Y1) / ((X1 + Mu1*(exp(L8*T1*10^6) - exp(L8*t*10^6))) - X1)) * X1
+  ((Y1 + (Mu1/U8U5)*(exp(L5*T1*10^6) - exp(L5*t*10^6))) - Y1) / ((X1 + Mu1*(exp(L8*T1*10^6) - exp(L8*t*10^6))) - X1)
 }
